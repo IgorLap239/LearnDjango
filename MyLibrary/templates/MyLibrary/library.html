@@ -1,0 +1,45 @@
+{% extends 'MyLibrary/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block Title %}
+    My Library
+{% endblock %}
+
+{% block content %}
+    <div class="page_header">
+        <h1>Моя библиотека</h1>
+    </div>
+
+    <div class="table_block">
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Год издания</th>
+                <th>Количество страниц</th>
+            </tr>
+            {% for book in all_books %}
+                <tr>
+                    <td>{{ book.book_name }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.year }}</td>
+                    <td>{{ book.pages }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="page_footer">
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            <input name="book_name" type="text" placeholder="Название книги">
+            <span>{{ library_form.author}}</span>
+            <input name="year" type="date">
+            <input name="pages" type="number" placeholder="Количество страниц">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+{% endblock %}

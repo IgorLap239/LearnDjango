@@ -1,0 +1,42 @@
+{% extends 'MyLibrary/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block Title %}
+    My Library
+{% endblock %}
+
+{% block content %}
+    <div class="page_header">
+        <h1>Авторы</h1>
+    </div>
+
+    <div class="table_block">
+        <table>
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Дата рождения</th>
+            </tr>
+            {% for author in all_authors %}
+                <tr>
+                    <td>{{ author.surname }}</td>
+                    <td>{{ author.name }}</td>
+                    <td>{{ author.birthday }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="page_footer">
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            <input name="surname" type="text" placeholder="Фамилия">
+            <input name="name" type="text" placeholder="Имя">
+            <input name="birthday" type="date">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+{% endblock %}
