@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'django_registration',
     'MyLibrary',
 ]
 
@@ -100,5 +101,18 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [os.path.join('static'), ]
-
 CRISPY_TEMPLATE_PACK = 'bootstrp4'
+
+REGISTRATION_OPEN = True        # If True, users can register
+ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
+LOGIN_REDIRECT_URL = '/profile'
+LOGIN_URL = '/accounts/login/'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'learndjango.lis@gmail.com'
+EMAIL_PORT = 587
+#EMAIL_HOST_PASSWORD = '' #put it in settings_local.py
+#unblock gmail account by link:
+#https://myaccount.google.com/lesssecureapps

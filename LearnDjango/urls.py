@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import path, include
+from django_registration.backends.activation.views import RegistrationView
+from django_registration.forms import RegistrationFormUniqueEmail
 
 from MyLibrary.views import library, books_authors
 
@@ -22,5 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('library/', library, name='library'),
     path('authors/', books_authors, name='authors'),
+    path('accounts/register/', RegistrationView.as_view(form_class=RegistrationFormUniqueEmail),  name='django_registration_register_uniq_email'),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 

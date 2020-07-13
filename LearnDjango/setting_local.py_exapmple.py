@@ -17,3 +17,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+DOMAIN = '127.0.0.1:8000' #или домен вашего сайта, если это файл на продакшене
+EMAIL_HOST_PASSWORD = '*********'
