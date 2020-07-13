@@ -106,7 +106,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrp4'
 REGISTRATION_OPEN = True        # If True, users can register
 ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course, use a different value.
 REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
-LOGIN_REDIRECT_URL = '/profile'
+LOGIN_REDIRECT_URL = '/library'
 LOGIN_URL = '/accounts/login/'
 
 EMAIL_USE_TLS = True
